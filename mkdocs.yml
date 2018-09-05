@@ -1,0 +1,18 @@
+site_name: Entity Templates
+repo_url: https://github.com/MegaphoneJon/com.megaphonetech.entitytemplates
+theme: material
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - def_list
+  - codehilite
+  - toc(permalink=true)
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tilde
+  - pymdownx.betterem
+  - pymdownx.mark
+pages:
+  - Installation: index.md
+  - Using Templates: using.md

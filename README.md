@@ -4,24 +4,16 @@
 
 ## Overview
 
-This extension allows to create tempates for Contact, Contribution etc.
+This extension allows you to create templates for Contacts and Contributions.
+
+Templates will pre-fill your "New Individual", "New Organization", and/or "New Contribution" screens with values you've pre-selected.  This includes custom fields and tags/groups.  Perhaps you have a regularly scheduled event that brings in new constituents that need the same "Source" field and are tagged/grouped the same way - this will cut down on repetitive data entry.
 
 ## Installation
 
-1. If you have not already done so, setup Extensions Directory
-  1. Go to Administer >> System Settings >> Directories
-      1. Set an appropriate value for CiviCRM Extensions Directory. For example, for Drupal, [civicrm.files]/ext/
-      1. In a different window, ensure the directory exists and is readable by your web server process.
-  1. Click Save.
-1. If you have not already done so, setup Extensions Resources URL
-  1. Go to Administer >> System Settings >> Resource URLs
-      1. Beside Extension Resource URL, enter an appropriate values such as [civicrm.files]/ext/
-  1. Click Save.
-1. Install Entity Template extension
-  1. Go to Administer >> Customize Data and Screens >> Manage Extensions.
-  1. Click on Add New tab.
-  1. If Entity Template is not in the list of extensions, manually download it and unzip it into the extensions direction setup above, then return to this page.
-  1. Beside Entity Template, click Download.
-  1. Review the information, then click Download and Install.
+Follow the instructions to install extensions manually in the [CiviCRM documentation](https://docs.civicrm.org/sysadmin/en/latest/customize/extensions/#installing-a-new-extension).
 
-This extension has been developed and is being maintained by [Megaphone Technology Consulting](https://www.megaphonetech.com/).
+## Using
+Documentation for this extension is available [on the CiviCRM documentation site](https://docs.civicrm.org/entitytemplates/en/latest).
+
+This extension is developed and maintained by [Megaphone Technology Consulting](https://www.megaphonetech.com/).
+This extension has been sponsored by the [Armenian General Benevolent Union](https://agbu.org).
