@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/entity/templates</path>
+    <page_callback>CRM_EntityTemplates_Page_EntityTemplates</page_callback>
+    <title>Entity Templates</title>
+    <access_arguments>administer CiviCRM</access_arguments>
+  </item>
+</menu>
