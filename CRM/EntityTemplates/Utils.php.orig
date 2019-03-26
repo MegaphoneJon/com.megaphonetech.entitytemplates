@@ -34,14 +34,6 @@ class CRM_EntityTemplates_Utils {
    * @param object $form
    */
   public static function buildForm($formName, &$form) {
-    if ('CRM_Custom_Form_CustomDataByType' == $formName) {
-      if (empty($form->_entityTemplateId)) {
-        return;
-      }
-      $formValues = CRM_EntityTemplates_BAO_EntityTemplates::getFormValues($form->_entityTemplateId);
-      $form->setDefaults($formValues);
-    }
-
     if (!empty($form->_entityTemplateValues)) {
       if ($form->_entityTemplate) {
         unset($form->_required);
@@ -83,17 +75,6 @@ class CRM_EntityTemplates_Utils {
         $formValues = CRM_EntityTemplates_BAO_EntityTemplates::getFormValues($form->_entityTemplateId);
         $formValues['entity_template_id'] = $form->_entityTemplateId;
         $form->setDefaults($formValues);
-        CRM_Core_Resources::singleton()->addScript("
-          CRM.$(function($) {
-            $(document).ajaxSend(function(event, jqxhr, settings) {
-              if (settings.url .indexOf('civicrm/custom') != -1) {
-                settings.url = settings.url + '&templateId={$form->_entityTemplateId}';
-              } 
-            });
-          })",
-          10,
-          'html-header'
-        );
       }
       CRM_Core_Region::instance('page-body')->add([
         'template' => 'CRM/EntityTemplates/EntityTemplate.tpl',
@@ -130,6 +111,7 @@ class CRM_EntityTemplates_Utils {
       if ($id) {
         $entityParams['id'] = $id;
       }
+
       civicrm_api3('EntityTemplates', 'create', $entityParams);
 
       // print message

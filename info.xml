@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <extension key="com.megaphonetech.entitytemplates" type="module">
   <file>entitytemplates</file>
-  <name>Entity Template</name>
+  <name>Entity Templates</name>
   <description>This extension allows you to create templates for Contacts and Contributions.</description>
   <license>AGPL-3.0</license>
   <maintainer>
