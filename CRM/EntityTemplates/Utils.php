@@ -82,13 +82,26 @@ class CRM_EntityTemplates_Utils {
       if ($form->_entityTemplateId) {
         $formValues = CRM_EntityTemplates_BAO_EntityTemplates::getFormValues($form->_entityTemplateId);
         $formValues['entity_template_id'] = $form->_entityTemplateId;
+
+        self::formatDateParams($formValues, $form->_elements);
         $form->setDefaults($formValues);
+
+        if (!empty($formValues['payment_instrument_id'])) {
+          CRM_Core_Payment_Form::buildPaymentForm(
+            $form,
+            $form->getVar('_paymentProcessor'),
+            FALSE,
+            TRUE,
+            $formValues['payment_instrument_id']
+          );
+        }
+
         CRM_Core_Resources::singleton()->addScript("
           CRM.$(function($) {
             $(document).ajaxSend(function(event, jqxhr, settings) {
               if (settings.url .indexOf('civicrm/custom') != -1) {
                 settings.url = settings.url + '&templateId={$form->_entityTemplateId}';
-              } 
+              }
             });
           })",
           10,
@@ -137,6 +150,26 @@ class CRM_EntityTemplates_Utils {
       // redirect to list page
       $url = CRM_Utils_System::url('civicrm/entity/templates', "reset=1&entityType={$objectName}");
       CRM_Utils_System::redirect($url);
+    }
+  }
+
+  /**
+   * Format Date field values in params.
+   *
+   * @param array $params
+   * @param object $elements
+   */
+  public static function formatDateParams(&$params, $elements) {
+    foreach ($elements as $element) {
+      if (!empty($element->_attributes) && array_key_exists(
+        'data-crm-datepicker',
+        $element->_attributes
+      )) {
+        $name = $element->_attributes['name'];
+        if (!CRM_Utils_System::isNull($params[$name])) {
+          $params[$name] = date('Y-m-d H:i:s', strtotime($params[$name]));
+        }
+      }
     }
   }
 
