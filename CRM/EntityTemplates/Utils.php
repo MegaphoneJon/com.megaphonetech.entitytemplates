@@ -67,6 +67,19 @@ class CRM_EntityTemplates_Utils {
             }
           }
           parse_str($queryString, $queryString);
+          // Lets fetch the entry URL to see if we came from a contribution of a contact
+          if ($form->controller->_entryURL && $url_parts = parse_url($form->controller->_entryURL)) {
+            $urlParams = array();
+            $url_parts = str_replace('&amp;', '&', $url_parts);
+            parse_str($url_parts['query'], $urlParams);
+          }
+          // Do a small check: if context is contribution, append the cid so we don't lose our contact
+          if (isset($queryString['context']) && isset($urlParams['context'])) {
+             if ($urlParams['context'] == 'contribution' && isset($urlParams['cid'])) {
+               $queryString['context'] = $urlParams['context'];
+               $queryString['cid'] = $urlParams['cid'];
+             }
+          }
           if (isset($queryString['templateId'])) {
             unset($queryString['templateId']);
           }
