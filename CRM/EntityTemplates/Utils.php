@@ -84,6 +84,11 @@ class CRM_EntityTemplates_Utils {
         $formValues['entity_template_id'] = $form->_entityTemplateId;
 
         self::formatDateParams($formValues, $form->_elements);
+        // Contact ID shouldn't be part of the template.
+        if (isset($formValues['contact_id'])) {
+          unset($formValues['contact_id']);
+        }
+
         $form->setDefaults($formValues);
 
         if (!empty($formValues['payment_instrument_id'])) {
