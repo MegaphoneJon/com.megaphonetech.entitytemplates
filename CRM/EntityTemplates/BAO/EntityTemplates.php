@@ -77,7 +77,13 @@ class CRM_EntityTemplates_BAO_EntityTemplates extends CRM_Core_DAO_EntityTemplat
       'id' => $templateId,
       'return' => 'form_values',
     ]);
-    return json_decode($formValues, TRUE);
+    $formValues = json_decode($formValues, TRUE);
+    // This used to work, 'null' is now being interpreted literally though.
+    foreach ($formValues as $k => $formValue)
+    if ($formValue === 'null') {
+      unset($formValues[$k]);
+    }
+    return $formValues;
   }
 
   /**
