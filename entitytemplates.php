@@ -13,15 +13,6 @@ function entitytemplates_civicrm_config(&$config) {
 }
 
 /**
- * Implements hook_civicrm_xmlMenu().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_xmlMenu
- */
-function entitytemplates_civicrm_xmlMenu(&$files) {
-  _entitytemplates_civix_civicrm_xmlMenu($files);
-}
-
-/**
  * Implements hook_civicrm_install().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_install
@@ -31,21 +22,11 @@ function entitytemplates_civicrm_install() {
 }
 
 /**
- * Implements hook_civicrm_postInstall().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_postInstall
- */
-function entitytemplates_civicrm_postInstall() {
-  _entitytemplates_civix_civicrm_postInstall();
-}
-
-/**
  * Implements hook_civicrm_uninstall().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_uninstall
  */
 function entitytemplates_civicrm_uninstall() {
-  _entitytemplates_civix_civicrm_uninstall();
   CRM_Core_DAO::executeQuery('
     DROP TABLE IF EXISTS civicrm_entity_templates;
   ');
@@ -61,24 +42,6 @@ function entitytemplates_civicrm_enable() {
 }
 
 /**
- * Implements hook_civicrm_disable().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_disable
- */
-function entitytemplates_civicrm_disable() {
-  _entitytemplates_civix_civicrm_disable();
-}
-
-/**
- * Implements hook_civicrm_upgrade().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade
- */
-function entitytemplates_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
-  return _entitytemplates_civix_civicrm_upgrade($op, $queue);
-}
-
-/**
  * Implements hook_civicrm_managed().
  *
  * Generate a list of entities to create/deactivate/delete when this module
@@ -87,7 +50,6 @@ function entitytemplates_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_managed
  */
 function entitytemplates_civicrm_managed(&$entities) {
-  _entitytemplates_civix_civicrm_managed($entities);
   $entities[] = [
     'module' => 'com.megaphonetech.entitytemplates',
     'name' => 'entity_template_for',
@@ -129,42 +91,6 @@ function entitytemplates_civicrm_managed(&$entities) {
 }
 
 /**
- * Implements hook_civicrm_caseTypes().
- *
- * Generate a list of case-types.
- *
- * Note: This hook only runs in CiviCRM 4.4+.
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
- */
-function entitytemplates_civicrm_caseTypes(&$caseTypes) {
-  _entitytemplates_civix_civicrm_caseTypes($caseTypes);
-}
-
-/**
- * Implements hook_civicrm_angularModules().
- *
- * Generate a list of Angular modules.
- *
- * Note: This hook only runs in CiviCRM 4.5+. It may
- * use features only available in v4.6+.
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_angularModules
- */
-function entitytemplates_civicrm_angularModules(&$angularModules) {
-  _entitytemplates_civix_civicrm_angularModules($angularModules);
-}
-
-/**
- * Implements hook_civicrm_alterSettingsFolders().
- *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_alterSettingsFolders
- */
-function entitytemplates_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
-  _entitytemplates_civix_civicrm_alterSettingsFolders($metaDataFolders);
-}
-
-/**
  * Implements hook_civicrm_entityTypes().
  *
  * Declare entity types provided by this module.
@@ -172,7 +98,6 @@ function entitytemplates_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) 
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_entityTypes
  */
 function entitytemplates_civicrm_entityTypes(&$entityTypes) {
-  _entitytemplates_civix_civicrm_entityTypes($entityTypes);
   $entityTypes[] = [
     'name'  => 'EntityTemplates',
     'class' => 'CRM_EntityTemplates_BAO_EntityTemplates',
